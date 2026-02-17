@@ -72,6 +72,7 @@ Toronto_Weather_Analysis/
 ├── Assignment-1.ipynb
 ├── TORONTO_INTL_A_Climate_Daily_Data_2025.csv
 └── README.md
+```
 ---
 ## 📄 Dataset Description
 
