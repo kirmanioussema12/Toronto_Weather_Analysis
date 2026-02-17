@@ -72,7 +72,7 @@ Toronto_Weather_Analysis/
 ├── Assignment-1.ipynb
 ├── TORONTO_INTL_A_Climate_Daily_Data_2025.csv
 └── README.md
-
+---
 ## 📄 Dataset Description
 
 **Dataset File:**  
@@ -83,7 +83,7 @@ Toronto International Airport (Toronto, Canada)
 
 **Time Period:**  
 January 2025 → December 2025
-
+---
 ### 🔎 What the Dataset Contains
 
 Daily climate measurements including:
@@ -151,24 +151,5 @@ This project follows a **full mini data science pipeline** using **only core Pyt
 - 🌡️ **Yearly Mean Temperature:** XX.X °C  
 - 🌧️ **Total Precipitation (Year):** XXX.X mm  
 
-## 🖼️ Screenshots
 
-*(Optional – you can add images of your notebook here)*
-
-![Notebook Preview](images/notebook_preview.png)  
-<!-- Add more screenshots as needed -->
-
-## ▶️ How to Run
-
-### Option 1: Run Locally
-
-```bash
-# Clone the repository
-git clone https://github.com/kirmanioussema12/Toronto_Weather_Analysis.git
-
-# Enter the project folder
-cd Toronto_Weather_Analysis
-
-# Start Jupyter Notebook
-jupyter notebook
 
