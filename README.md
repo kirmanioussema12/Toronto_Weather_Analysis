@@ -63,6 +63,59 @@ Everything is implemented using:
 - Manual numeric conversion (`float`, `int`)  
 
 ---
+## 📊 About the Data
+
+This dataset contains **daily weather observations** from **Toronto Pearson International Airport (TORONTO INTL A)** for the full year **2025**.  
+- **Station**: Toronto Pearson International Airport  
+- **Climate ID**: 6158731  
+- **Coordinates**: Longitude -79.63°, Latitude 43.68°  
+- **Time coverage**: January 1, 2025 – December 31, 2025 (365 days)  
+- **Source style**: Environment and Climate Change Canada (ECCC) daily climate summary format
+
+### Main Columns Explained
+
+| Column Name              | Data Type       | Description                                                                 | Unit / Range / Notes                                      | Typical Values (from 2025 data)                     |
+|--------------------------|-----------------|-----------------------------------------------------------------------------|-----------------------------------------------------------|-----------------------------------------------------|
+| Longitude (x)            | Float           | Longitude coordinate of the station                                         | Degrees                                                   | Always -79.63                                       |
+| Latitude (y)             | Float           | Latitude coordinate of the station                                          | Degrees                                                   | Always 43.68                                        |
+| Station Name             | String          | Name of the weather station                                                 | —                                                         | Always "TORONTO INTL A"                             |
+| Climate ID               | Integer/String  | Official ECCC climate station identifier                                    | —                                                         | Always 6158731                                      |
+| Date/Time                | String (ISO)    | Full date of the observation                                                | YYYY-MM-DD                                                | 2025-01-01 to 2025-12-31                            |
+| Year                     | Integer         | Year of the observation                                                     | —                                                         | Always 2025                                         |
+| Month                    | Integer         | Month (1–12)                                                                | —                                                         | 1 to 12                                             |
+| Day                      | Integer         | Day of the month (1–31)                                                     | —                                                         | 1 to 31                                             |
+| Max Temp (°C)            | Float           | Highest temperature recorded during the day                                 | °C                                                        | -10.6 to 14.1 (Jan–Nov sample)                      |
+| Min Temp (°C)            | Float           | Lowest temperature recorded during the day                                  | °C                                                        | -18.5 to 5.1                                        |
+| Mean Temp (°C)           | Float           | (Max + Min) / 2                                                             | °C                                                        | -14.0 to 8.5                                        |
+| Heat Deg Days (°C)       | Float           | Heating degree days (base 18°C) – measure of heating demand                 | °C-days                                                   | 9.5 to 32.0 (higher in winter)                      |
+| Cool Deg Days (°C)       | Float           | Cooling degree days (base 18°C) – measure of cooling demand                 | °C-days                                                   | Almost always 0 in 2025 sample (cold year?)         |
+| Total Rain (mm)          | Float           | Total rainfall measured                                                     | mm                                                        | 0 to 41.2 (very high on Dec 28)                     |
+| Total Snow (cm)          | Float           | Total snowfall measured                                                     | cm                                                        | 0 to 17.4 (mostly winter months)                    |
+| Total Precip (mm)        | Float           | Total precipitation (rain + liquid water equivalent of snow)               | mm                                                        | 0 to 41.2                                           |
+| Snow on Grnd (cm)        | Float / Empty   | Depth of snow on the ground at observation time                             | cm                                                        | 0 to 8 (missing on many days)                       |
+| Dir of Max Gust (10s deg)| Integer / Empty | Direction of the maximum wind gust (in tens of degrees)                     | 0–36 (10° increments), or empty                           | 0–50 (missing on calm days)                         |
+| Spd of Max Gust (km/h)   | Integer / Empty | Speed of the maximum wind gust during the day                               | km/h                                                      | 20–85 (missing on calm days)                        |
+
+**Key Observations from the 2025 Data**
+- Temperatures are generally **cool** — many winter days below -10°C, summer months not shown in sample but appear mild.
+- **Precipitation** is mixed: rain in warmer months, snow in winter.
+- **Cooling degree days** are 0 in the provided sample — suggests a cooler-than-average year or early/late season data.
+- Many **gust direction/speed** fields are empty on calm days.
+- Snow on the ground is sparsely reported (many blanks).
+- Extreme values: highest rain 41.2 mm (Dec 28), highest gust 85 km/h (Feb 6).
+
+You can load and explore the full file with:
+
+```python
+import pandas as pd
+
+df = pd.read_csv("TORONTO_INTL_A_Climate_Daily_Data_2025 (1).csv")
+print(df.info())
+print(df.describe())
+print("Monthly average temperature:")
+print(df.groupby('Month')['Mean Temp (°C)'].mean())
+```
+---
 
 ## 📁 Project Structure
 
